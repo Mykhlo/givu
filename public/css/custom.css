@@ -8,3 +8,6 @@
 .overflow-auto{
     overflow: auto !important; 
 }
+.overflow-hidden{
+    overflow: hidden !important;
+}

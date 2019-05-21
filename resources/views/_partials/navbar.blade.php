@@ -37,7 +37,7 @@
   </nav>
   <hr class="divider mt-0 mb-0">
   <nav class="navbar navbar-expand-lg">
-  <div class="container">          
+  <div class="container overflow-hidden">          
       <ul class="navbar-nav flex-row overflow-auto mt-lg-0">
         <li class="nav-item border-right">
           <a class="nav-link mt-0 mb-0 ml-3 ml-md-0" href="#">Ecology <span class="sr-only">(current)</span></a>
