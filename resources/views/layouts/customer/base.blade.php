@@ -17,7 +17,7 @@
     </head>
     <body>
         @section('navbar')
-                @include('layouts.customer.navbar')
+                @include('_partials.navbar')
         @show
         <div class="container">
             @yield('content')

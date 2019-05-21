@@ -2,3 +2,9 @@
 .navbar-collapse{
     height: auto !important;
  }
+ .flex-row{
+     flex-direction: row !important;
+ }
+.overflow-auto{
+    overflow: auto !important; 
+}
