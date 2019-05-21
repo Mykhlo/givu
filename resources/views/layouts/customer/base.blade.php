@@ -9,9 +9,10 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <!-- Theme Styles -->
-        <link href="{{ asset('css/theme/paper-kit.css') }}" rel="stylesheet">    
-        <link href="{{ asset('css/theme/bootstrap.min.css') }}" rel="stylesheet">    
+        <link href="{{ asset('css/theme/bootstrap.min.css') }}" rel="stylesheet"> 
+        <link href="{{ asset('css/theme/paper-kit.css?v=2.2.0') }}" rel="stylesheet">                       
         <!-- End Theme Styles/Fonts -->
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         @stack('css')    
     </head>
     <body>
