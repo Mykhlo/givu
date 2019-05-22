@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top" color-on-scroll="300">
+<nav class="navbar navbar-expand-lg fixed-top"  >
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="#" rel="tooltip" title="{{env('APP_NAME')}}" data-placement="bottom" target="_blank">
@@ -11,27 +11,43 @@
         </button>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
+      
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-            <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
+              <a class="nav-link" href="#">News</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Partners</a>
+              <a class="nav-link" href="#">Partners</a>
             </li>
         </ul>
-        <div class="justify-content-end">
-            <ul class="navbar-nav">                     
-            <li class="nav-item">
-                <a href="#" target="_blank" class="btn btn-light btn-round">Log-in</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" target="_blank" class="btn btn-danger btn-round">Sign-up</a>
-            </li>
+        <div class="navbar-nav">
+          <span class="mt-1 mr-2 nav-counter-title">Number of donations - </span><h4 class="counter font-weight-bold text-success mt-0 mr-4"></h4>
+        </div>
+        <div class="justify-content-end">            
+            <ul class="navbar-nav">                            
+              <li class="nav-item">
+                  <a href="#" target="_blank" class="btn btn-light btn-round">Log-in</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" target="_blank" class="btn btn-danger btn-round">Sign-up</a>
+              </li>
             </ul>
         </div>
+      
       </div>
     </div>
   </nav>
+  @push('scripts')
+  <script src="{{ asset('js/animationCounter.js') }}"></script>
+  <script>
+    $('.counter').animationCounter({
+      start: 21800,      
+      delay: 0.5,
+      end: 22097
+    });
+
+  </script>
+  @endpush
