@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" color-on-scroll="300">
+<nav class="navbar navbar-expand-lg fixed-top" color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="#" rel="tooltip" title="{{env('APP_NAME')}}" data-placement="bottom" target="_blank">
@@ -35,25 +35,3 @@
       </div>
     </div>
   </nav>
-  <hr class="divider mt-0 mb-0">
-  <nav class="navbar navbar-expand-lg">
-  <div class="container overflow-hidden">          
-      <ul class="navbar-nav flex-row overflow-auto mt-lg-0">
-        <li class="nav-item border-right">
-          <a class="nav-link mt-0 mb-0 ml-3 ml-md-0" href="#">Ecology <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item border-right">
-          <a class="nav-link mt-0 mb-0 text-nowrap" href="#">Health</a>
-        </li>
-        <li class="nav-item border-right">
-          <a class="nav-link mt-0 mb-0 text-nowrap" href="#">Education</a>
-        </li>
-        <li class="nav-item border-right">
-          <a class="nav-link mt-0 mb-0 text-nowrap" href="#">Human rights</a>
-        </li>
-        <li class="nav-item border-right text-nowrap">
-          <a class="nav-link mt-0 mb-0" href="#">Animal rights</a>
-        </li>
-      </ul>    
-  </div>
-</nav>
