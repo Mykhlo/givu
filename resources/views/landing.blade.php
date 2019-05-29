@@ -3,12 +3,18 @@
 @section('content')
 <div class="row mt-4">
     <div class="col-lg-4">    
-        <div class="card-body">
+        <div class="py-4">
             <h5>Hello! </h5>
             <p>Welcome to our community  of people who improve the world every day by making free donations. Free donation? You heard correctly, see how it works on the cartoon! You now don't need to make a donation of money, you can donate your time ;)</p>      
         </div>
+        <div class="row mb-3">
+          <div class="col-6 ml-3 text-center d-flex align-items-center bg-success counter-title rounded">
+            Number of donations
+          </div>
+          <h4 class="counter text-center d-flex align-items-center font-weight-bold text-white mt-0 ml-2 pl-2 pr-2 bg-danger rounded">22097</h4>
+        </div>
     </div>
-    <div class="col-lg-8">             
+    <div class="col-lg-8 d-none d-lg-block">             
         <div id="banner" class="rounded">
             <div id="cloud-scroll"></div>
         </div>        

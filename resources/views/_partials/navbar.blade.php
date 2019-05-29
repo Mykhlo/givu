@@ -23,9 +23,6 @@
               <a class="nav-link" href="#">Partners</a>
             </li>
         </ul>
-        <div class="navbar-nav">
-          <span class="mt-1 mr-2 nav-counter-title">Number of donations - </span><h4 class="counter font-weight-bold text-success mt-0 mr-4"></h4>
-        </div>
         <div class="justify-content-end">            
             <ul class="navbar-nav">                            
               <li class="nav-item">
