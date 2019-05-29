@@ -19,12 +19,11 @@
 p.card-description {
     height: 100px;
 }
-.nav-counter-title{
+.counter-title{
     opacity: .8;
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: 600;
-    color: #66615B;
+    font-weight: 600;    
 }
 .favourite{  
     position: absolute;
