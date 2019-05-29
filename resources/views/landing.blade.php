@@ -114,7 +114,145 @@
             </div>
           </div>
         </div>
-    </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/0b1849e7-721a-463f-ab85-8f3d52ea82c4.JPEG')">
+                <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" checked autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+                </div>            
+              <div class="card-body">
+                <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                  <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/dbdf8ee9-ed61-4359-aac5-0a3e927fca2d.JPEG')">
+                <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+                </div>
+                <div class="card-body">
+                <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                    <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/524e6846-5776-4916-9525-dee2d46e385c.JPEG')">
+              <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+              </div>
+              <div class="card-body">
+                    <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                    <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/7c511d09-33f4-4ff0-bb3e-95a18d42d4ae.JPEG')">
+              <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+              </div>
+              <div class="card-body">
+                    <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                    <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/0b1849e7-721a-463f-ab85-8f3d52ea82c4.JPEG')">
+                <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" checked autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+                </div>            
+              <div class="card-body">
+                <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                  <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/dbdf8ee9-ed61-4359-aac5-0a3e927fca2d.JPEG')">
+                <div class="btn-group-toggle favourite" data-toggle="buttons">
+                  <label class="btn btn-outline-success btn-round">
+                    <input type="checkbox" alt="Submit" autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                  </label>
+                </div>
+                <div class="card-body">
+                <h6 class="card-category">Header 1</h6>
+                <a href="#">
+                    <h3 class="card-title">Header 2</h3>
+                </a>
+                <p class="card-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                </p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger btn-round">Donate</button>
+                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
 
 @endsection
 @push('scripts')
