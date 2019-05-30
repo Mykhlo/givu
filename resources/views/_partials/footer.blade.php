@@ -1,4 +1,4 @@
-<footer class="section">
+<footer class="section py-3">
     <div class="container">
       <div class="row">
          <div class="col-lg-6 mt-2 pr-lg-0 d-flex justify-content-lg-end align-items-center">
