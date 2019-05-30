@@ -1,6 +1,9 @@
 /* .navbar-collapse{
     overflow: scroll;
 } */
+body{
+  background-color: #eee;
+}
 .navbar-collapse ul{
     height: auto !important;
  }

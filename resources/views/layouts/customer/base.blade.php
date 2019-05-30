@@ -22,6 +22,9 @@
         <div class="content container">
             @yield('content')
         </div>
+        @section('footer')
+                @include('_partials.footer')
+        @show
         <!-- Theme scripts -->        
         
         <script src="{{ asset('js/theme/core/jquery.min.js') }}" type="text/javascript"></script>

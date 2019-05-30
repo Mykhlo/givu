@@ -37,14 +37,3 @@
       </div>
     </div>
   </nav>
-  @push('scripts')
-  <script src="{{ asset('js/animationCounter.js') }}"></script>
-  <script>
-    $('.counter').animationCounter({
-      start: 21800,      
-      delay: 0.5,
-      end: 22097
-    });
-
-  </script>
-  @endpush

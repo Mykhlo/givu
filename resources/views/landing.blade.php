@@ -253,8 +253,26 @@
           </div>
         </div>
   </div>
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body bg-success d-flex justify-content-center align-items-center rounded">
+          <h6 class="pr-2">You want people to donate to your organization or project? Then add it to our collection!</h6>
+          <a href="#" target="_blank" class="btn btn-light btn-round">Follow here...</a>
+        </div>
+      </div>
+    </div>  
+  </div> 
 
 @endsection
 @push('scripts')
+<script src="{{ asset('js/animationCounter.js') }}"></script>
 <script src="{{ asset('js/landing/custom.js') }}" type="text/javascript"></script>
+<script>
+    $('.counter').animationCounter({
+      start: 21800,      
+      delay: 0.5,
+      end: 22097
+    });
+</script>
 @endpush
