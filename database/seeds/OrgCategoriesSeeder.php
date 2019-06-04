@@ -39,7 +39,11 @@ class OrgCategoriesSeeder extends Seeder
             [
                 'name' => 'Art and culture',
                 'created_at' => \Carbon\Carbon::now(),
-            ],            
+            ],
+            // [
+            //     'name' => 'test',
+            //     'created_at' => \Carbon\Carbon::now(),
+            // ],              
         ];
         DB::table('org_categories')->insert($orgs);
     }

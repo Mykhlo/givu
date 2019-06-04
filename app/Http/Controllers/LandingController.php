@@ -14,7 +14,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $categories = OrgCategory::all(); //get all organizations catigories
+        $categories = OrgCategory::all(); //get all organizations catigories        
+        $categories = $categories->chunk(2); //split array by rows(two in row)
         return view('landing', compact('categories'));
     }
 
