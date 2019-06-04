@@ -31,7 +31,7 @@ p.card-description {
 .favourite{  
     position: absolute;
     right: -0.7rem;
-    bottom: 16rem;
+    bottom: 18.5rem;
     z-index: 3;
 }
 .favourite label{

@@ -48,10 +48,10 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
                 </p>
                 <div class="btn-group col-8 px-0" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-danger btn-round">Donate</button>
-                    <button type="button" class="btn btn-success btn-round">Donate for free</button>                    
+                    <button type="button" class="btn btn-danger btn-round">Donate for free</button>
+                    <button type="button" class="btn btn-success btn-round">quick free donation</button>                    
                 </div>
-                <button type="button" class=" col-8 mt-2 btn btn-outline-danger btn-round">quick free donation</button>
+                <button type="button" class=" col-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate</button>
               </div>
             </div>
           </div>
