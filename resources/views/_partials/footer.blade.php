@@ -28,7 +28,7 @@
           <h4 class="counter text-center font-weight-bold text-white mt-0 ml-2 pl-2 pr-2 bg-danger rounded">22097</h4>
          </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
          <div class="col-12 mt-2 d-flex justify-content-center align-items-center ">
             <h6 class="py-2 px-4 rounded">More details about GivU's impact on… <a href="#" class="text-danger font-weight-bold">Transparancy"</a></h6>
          </div>
