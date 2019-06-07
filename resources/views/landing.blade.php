@@ -51,7 +51,7 @@
                     <button type="button" class="btn btn-danger btn-round">Donate for free</button>
                     <button type="button" class="btn btn-success btn-round">quick free donation</button>                    
                 </div>
-                <button type="button" class=" col-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate</button>
+                <button type="button" class=" col-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate (credit card)</button>
               </div>
             </div>
           </div>

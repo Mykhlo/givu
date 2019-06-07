@@ -1,13 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
 
     /**
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+       'customer_id', 'email', 'password',
     ];
 
     /**
@@ -36,4 +38,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // /**
+    //  * All of the relationships to be touched.
+    //  *
+    //  * @var array
+    //  */
+    // protected $touches = ['customer'];
+
+    /**
+     * Get the customer that the user belongs to.
+     */
+    public function customer()
+    {
+        $this->belongsTo('App\Models\Customer')->withTimeStamps();
+    }
 }
