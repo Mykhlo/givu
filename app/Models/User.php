@@ -39,13 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // /**
-    //  * All of the relationships to be touched.
-    //  *
-    //  * @var array
-    //  */
-    // protected $touches = ['customer'];
-
     /**
      * Get the customer that the user belongs to.
      */
