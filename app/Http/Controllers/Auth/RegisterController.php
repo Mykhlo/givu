@@ -63,17 +63,19 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
+    {                    
+        $new_user = User::create([            
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
+        ]);
+        
+        $new_user->assignRole('customer');        
+
         $new_customer =  Customer::create([
+            'user_id' => $new_user->id,
             'first_name' => $data['first_name'],
          //  'last_name' => $data['last_name']            
         ]);
-            
-        $new_user = User::create([
-            "customer_id" => $new_customer->id,
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);             
         
         return $new_user;
     }

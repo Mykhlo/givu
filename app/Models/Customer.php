@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes;    
 
     protected $fillable = [
+        'user_id',
         'first_name',
         'last_name',
     ];
@@ -18,8 +19,8 @@ class Customer extends Model
      * Get the user record associated with the customer.
      */
     public function user()
-    {
-        return $this->hasOne('App\Models\User');
+    {        
+        return $this->belongsTo('App\Models\User')->withTimeStamps();
     }
 
     /**

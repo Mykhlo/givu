@@ -34,11 +34,13 @@
           <div class="col-lg-5">
         @endif                   
             <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/0b1849e7-721a-463f-ab85-8f3d52ea82c4.JPEG')">
+              @hasrole('customer')
                 <div class="btn-group-toggle favourite" data-toggle="buttons">
                   <label class="btn btn-outline-success btn-round">
                     <input type="checkbox" alt="Submit" {{ $loop->parent->iteration < 2 ? 'checked' : ''}} autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
                   </label>
-                </div>            
+                </div> 
+              @endhasrole           
               <div class="card-body pt-4">
                 <!-- <h6 class="card-category">Header 1</h6> -->
                 <a href="#">
