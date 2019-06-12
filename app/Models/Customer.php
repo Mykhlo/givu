@@ -28,6 +28,6 @@ class Customer extends Model
      */
     public function favourites()
     {
-        return $this->belongsToMany('App\Models\OrgCategory');
+        return $this->belongsToMany('App\Models\OrgCategory', 'favourites', 'customer_id', 'org_category_id');
     }
 }

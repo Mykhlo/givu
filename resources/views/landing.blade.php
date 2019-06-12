@@ -77,10 +77,31 @@
 <script src="{{ asset('js/animationCounter.js') }}"></script>
 <script src="{{ asset('js/landing/custom.js') }}" type="text/javascript"></script>
 <script>
+  // counter animation
     $('.counter').animationCounter({
       start: 21800,      
       delay: 0.5,
       end: 22097
     });
+</script>
+<script>
+  // favourite ajax request
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    let favs = document.querySelectorAll(".favourite");
+    let token = document.getElementsByName('csrf-token')[0].getAttribute('content'); 
+    let xhttp = new XMLHttpRequest();
+
+    function fav_ajax(fav, index){
+      fav.onclick = () => {
+
+        xhttp.open("POST", "/", true);
+        xhttp.setRequestHeader("X-CSRF-TOKEN", token);
+        xhttp.send("fname=Henry&lname=Ford");
+      };      
+    }
+
+    favs.forEach(fav_ajax);
+  });
 </script>
 @endpush

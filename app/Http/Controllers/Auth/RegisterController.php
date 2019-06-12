@@ -71,7 +71,7 @@ class RegisterController extends Controller
         
         $new_user->assignRole('customer');        
 
-        $new_customer =  Customer::create([
+        $new_customer = Customer::create([
             'user_id' => $new_user->id,
             'first_name' => $data['first_name'],
          //  'last_name' => $data['last_name']            

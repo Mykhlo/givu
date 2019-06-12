@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\OrgCategory;
+use App\Models\{Favourites, OrgCategory};
+use Illuminate\Support\Facades\Auth;
 
 class LandingController extends Controller
 {
@@ -13,8 +14,8 @@ class LandingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $categories = OrgCategory::all(); //get all organizations catigories        
+    {  
+        $categories = OrgCategory::all(); //get all organizations catigories
         $categories = $categories->chunk(2); //split array by rows(two in row)
         return view('landing', compact('categories'));
     }
@@ -37,7 +38,13 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $test = Auth::user()->customer()->first()->favourites();
+        // dd(OrgCategory::all()->pluck('id')->toArray()); // collect array of categories
+        // dd([0 => 1, 1 => 2 ,2 => 3]);
+        // $test->syncWithoutDetaching(OrgCategory::all()->pluck('id')->toArray()); //add favourite category if not exist
+        
+        // dd($test); 
+        dd($request);
     }
 
     /**
