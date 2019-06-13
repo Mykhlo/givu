@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Favourites, OrgCategory};
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\{Auth, Validator};
 
 class LandingController extends Controller
 {
@@ -14,10 +14,22 @@ class LandingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
+    {   
+        //get auth user
+        $user = Auth::user();        
+        //get categories
         $categories = OrgCategory::all(); //get all organizations catigories
-        $categories = $categories->chunk(2); //split array by rows(two in row)
-        return view('landing', compact('categories'));
+        //get favourites if user authoricated
+        if(optional($user)->customer()){
+                $favourites = $user->customer()->first()->favourites()->get();
+                $categories = $categories->diff($favourites);//delete favourites from categories                
+                $categories = $favourites->merge($categories);//add lefted categories
+                $categories = $categories->chunk(2); //split array by rows(two in row)
+                return view('landing', compact('categories'), compact('favourites')); 
+        }else{
+                $categories = $categories->chunk(2); //split array by rows(two in row)
+                return view('landing', compact('categories')); 
+        }       
     }
 
     /**
@@ -31,20 +43,31 @@ class LandingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store favourite organizations
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function store(Request $request)
     {
-        // $test = Auth::user()->customer()->first()->favourites();
-        // dd(OrgCategory::all()->pluck('id')->toArray()); // collect array of categories
-        // dd([0 => 1, 1 => 2 ,2 => 3]);
-        // $test->syncWithoutDetaching(OrgCategory::all()->pluck('id')->toArray()); //add favourite category if not exist
-        
-        // dd($test); 
-        dd($request);
+        //get auth user
+        $user = Auth::user();         
+        //check is user are customer and authoricated
+        if(optional($user)->customer()){
+             $validator = Validator::make($request->all(), [
+                'id' => 'required|integer|min:0|max:255',            
+            ]);
+            //check if data is valid
+            if (!$validator->fails()){
+                $favourites = $user->customer()->first()->favourites();
+                //remove if exist and add if not
+                if($favourites->get()->contains($request->id)){
+                    $favourites->detach($request->id);
+                }else{
+                    $favourites->attach($request->id);
+                } 
+            }              
+        }      
     }
 
     /**

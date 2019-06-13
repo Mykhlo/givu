@@ -35,9 +35,9 @@
         @endif                   
             <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/0b1849e7-721a-463f-ab85-8f3d52ea82c4.JPEG')">
               @hasrole('customer')
-                <div class="btn-group-toggle favourite" data-toggle="buttons">
+                <div class="btn-group-toggle favourite" data-toggle="buttons" data-id="{{$category->id}}">
                   <label class="btn btn-outline-success btn-round">
-                    <input type="checkbox" alt="Submit" {{ $loop->parent->iteration < 2 ? 'checked' : ''}} autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                    <input type="checkbox" alt="Submit" {{ $favourites->contains($category->id) ? 'checked' : ''}} autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
                   </label>
                 </div> 
               @endhasrole           
@@ -93,11 +93,12 @@
     let xhttp = new XMLHttpRequest();
 
     function fav_ajax(fav, index){
+      let id = fav.getAttribute('data-id');
       fav.onclick = () => {
-
         xhttp.open("POST", "/", true);
         xhttp.setRequestHeader("X-CSRF-TOKEN", token);
-        xhttp.send("fname=Henry&lname=Ford");
+        xhttp.setRequestHeader('Content-Type', 'application/json');
+        xhttp.send(JSON.stringify({'id':id}));
       };      
     }
 
