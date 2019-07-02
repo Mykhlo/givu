@@ -5,3 +5,15 @@
 .nav-pills .nav-item .nav-link {
     color: #85817c;
 }
+#pills-tab .nav-item:last-child .nav-link {
+    border-radius: unset;
+}
+#pills-tab .nav-item:first-child .nav-link {
+    border-radius: unset;
+}
+/* Footer */
+footer.section {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
