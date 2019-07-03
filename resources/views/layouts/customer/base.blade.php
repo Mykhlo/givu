@@ -19,9 +19,6 @@
         @stack('css')    
     </head>
     <body>
-        @section('navbar')
-                @include('_partials.navbar')
-        @show
         <div class="content container">
             @yield('content')
         </div>

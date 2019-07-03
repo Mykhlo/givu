@@ -1,5 +1,5 @@
 @extends('layouts.customer.base')
-
+@include('_partials.navbar')
 @section('content')
 <div class="row mt-4">
     <div class="col-lg-4">    
