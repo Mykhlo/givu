@@ -65,11 +65,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </form>
-                    
+
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="row">
-                    <div class="col-3">   
+                    <div class="col-5 col-md-3">   
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link font-weight-bold active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Apparel & Accessories</a>
                             <a class="nav-link font-weight-bold" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Vehicles</a>
@@ -85,7 +85,7 @@
                             <a class="nav-link font-weight-bold" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Travel</a>
                         </div>
                     </div>
-                    <div class="col-9 text-secondary">
+                    <div class="col-7 col-md-9 text-secondary">
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                               <div class="row">
