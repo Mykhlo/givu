@@ -24,10 +24,20 @@ class Customer extends Model
     }
 
     /**
-     * The categories that belong to the user.
+     * The categories that belongs to the user.
      */
     public function favourites()
     {
         return $this->belongsToMany('App\Models\OrgCategory', 'favourites', 'customer_id', 'org_category_id');
     }
+
+    /**
+     * The Target items that belongs to user
+     */
+    public function target_items()
+    {
+        return $this->hasMany('App\Models\TargetItem');
+    }
+
+
 }
