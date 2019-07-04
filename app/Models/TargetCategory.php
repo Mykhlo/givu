@@ -8,7 +8,7 @@ class TargetCategory extends Model
 {
     protected $fillable = [
         'name',
-    ];
+    ];    
 
     /**
      * Subcategories that belongs to Target Category

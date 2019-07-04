@@ -71,18 +71,13 @@
                 <div class="row">
                     <div class="col-5 col-md-3">   
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link font-weight-bold active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Apparel & Accessories</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Vehicles</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Gifts and occasions</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Arts & Craft supplies</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Beauty products and services</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Consumer electronics</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Dating Services</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Education</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Events & Showbiz</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Food</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Home</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Travel</a>
+                        @foreach($categories as $category)
+                            @if($loop->first)
+                                <a class="nav-link font-weight-bold active" id="v-pills-{{$category->id}}-tab" data-toggle="pill" href="#v-pills-{{$category->id}}" role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="true">{{$category->name}}</a>
+                            @else
+                                <a class="nav-link font-weight-bold" id="v-pills-{{$category->id}}tab" data-toggle="pill" href="#v-pills-{{$category->id}}" role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="false">{{$category->name}}</a>
+                            @endif
+                        @endforeach
                         </div>
                     </div>
                     <div class="col-7 col-md-9 text-secondary">

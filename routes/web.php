@@ -12,9 +12,8 @@
 */
 
 Route::resource('/', 'LandingController');
+Route::resource('/customer', 'CustomerRegistrationController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::view('/customer', 'registration.customer.registration');
