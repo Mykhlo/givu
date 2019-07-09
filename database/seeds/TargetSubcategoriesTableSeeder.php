@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\TargetSubcategory;
 
 class TargetSubcategoriesTableSeeder extends Seeder
 {
@@ -30,5 +31,12 @@ class TargetSubcategoriesTableSeeder extends Seeder
             ],
         ];
         DB::table('target_subcategories')->insert($target_subcategories);
+
+        for($i=1;$i<=12;$i++){
+            TargetSubcategory::create([
+                'name' => 'Other',
+                'target_category_id' => $i,
+            ]);
+        }
     }
 }

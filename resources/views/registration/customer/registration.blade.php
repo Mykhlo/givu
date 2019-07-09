@@ -82,72 +82,27 @@
                     </div>
                     <div class="col-7 col-md-9 text-secondary">
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-                              <div class="row">
-                                <div class="col-md-4">
-                                    <h3>Activewear</h3>
-                                        <input type="checkbox" id="target-17" value="17" name="target_checkboxes[]">
-                                        <label for="target-17">Running wear</label> <br>
-                                        <input type="checkbox" id="target-18" value="18" name="target_checkboxes[]">
-                                        <label for="target-18">Yoga wear</label> <br>
-                                        <input type="checkbox" id="target-19" value="19" name="target_checkboxes[]">
-                                        <label for="target-19">Costumes</label> <br>
-                                        
-                                        <h3>Shoes</h3>
-                                        <input type="checkbox" id="target-1" value="1" name="target_checkboxes[]">
-                                        <label for="target-1">Activewear</label> <br>
-                                        <input type="checkbox" id="target-2" value="2" name="target_checkboxes[]">
-                                        <label for="target-2">Running wear</label> <br>
-                                        <input type="checkbox" id="target-3" value="3" name="target_checkboxes[]">
-                                        <label for="target-3">Yoga wear</label> <br>
-                                        <input type="checkbox" id="target-4" value="4" name="target_checkboxes[]">
-                                        <label for="target-4">Costumes</label> <br>
-                                        <input type="checkbox" id="target-5" value="5" name="target_checkboxes[]">
-                                        <label for="target-5"> Hand Soap - $3</label> <br>
-                                        <input type="checkbox" id="target-6" value="6" name="target_checkboxes[]">
-                                        <label for="target-6"> Air Freshener Spray - $2</label> <br>      
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>Eyewear</h3>
-                                        <input type="checkbox" id="target-7" value="7" name="target_checkboxes[]">
-                                        <label for="target-7">Eyeglasses / Contact Lenses</label> <br>
-                                        <input type="checkbox" id="target-8" value="8" name="target_checkboxes[]">
-                                        <label for="target-8">Sunglasses</label> <br>         
-                                        
-                                        <h3>Other</h3>
-                                        <input type="checkbox" id="target-9" value="9" name="target_checkboxes[]">
-                                        <label for="target-9">Swimwear</label> <br>
-                                        <input type="checkbox" id="target-10" value="10" name="target_checkboxes[]">
-                                        <label for="target-10">Wallets & briefcases & leather goods</label> <br> 
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>Formal wear</h3>
-                                        <input type="checkbox" id="target-11" value="11" name="target_checkboxes[]">
-                                        <label for="target-11">Suits and business attire</label> <br>
-                                        <input type="checkbox" id="target-13" value="13" name="target_checkboxes[]">
-                                        <label for="target-13">Handbags</label> <br>
-                                        <input type="checkbox" id="target-14" value="14" name="target_checkboxes[]">
-                                        <label for="target-14">Jewelry</label> <br>
-                                        <input type="checkbox" id="target-15" value="15" name="target_checkboxes[]">
-                                        <label for="target-15">Watches</label> <br>
-                                        <input type="checkbox" id="target-15" value="15" name="target_checkboxes[]">
-                                        <label for="target-10">Lingerie & underwear</label> <br>
-                                        <input type="checkbox" id="target-16" value="16" name="target_checkboxes[]">
-                                        <label for="target-16">luggage</label> <br>                                                                
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">2</div>
-                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">.3.</div>
-                            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">.4.</div>
-                            <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">.5.</div>
-                            <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">.6.</div>
-                            <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">.7.</div>
-                            <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">..8</div>
-                            <div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">.9.</div>
-                            <div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">.10.</div>
-                            <div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">.11.</div>
-                            <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">.12.</div>
+                            @foreach($categories as $category)                                                     
+                                @if($loop->first)                                   
+                                    <div class="tab-pane fade show active" id="v-pills-{{$category->id}}" role="tabpanel" aria-labelledby="v-pills-{{$category->id}}-tab">
+                                @else  
+                                    <div class="tab-pane fade" id="v-pills-{{$category->id}}" role="tabpanel" aria-labelledby="v-pills-{{$category->id}}-tab"> 
+                                @endif   
+                                        <div class="row mt-3 items">
+                                            @foreach($category->subcategories as $subcategory) 
+                                                    @if($loop->count > 1)
+                                                        <h3 {{$loop->first ? "class=mt-0":''}}>{{$subcategory->name}}</h3>
+                                                    @endif
+                                                        @foreach($subcategory->items as $item)   
+                                                        <div class="custom-control custom-checkbox">                                    
+                                                            <input type="checkbox" id="target-{{$item->id}}" class="custom-control-input" value="{{$item->id}}" name="target_checkboxes[]">
+                                                            <label class="custom-control-label pt-1" for="target-{{$item->id}}">{{$item->name}}</label>
+                                                        </div>
+                                                        @endforeach	
+                                            @endforeach                                                                                      
+                                        </div>																															
+                                    </div>
+                            @endforeach
                         </div>
                     </div>
                   </div>
@@ -165,4 +120,70 @@
 @endsection
 @push('css')
 <link href="{{ asset('css/customer/registration.css') }}" rel="stylesheet">
+@endpush
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    let items = document.querySelector('.items').cloneNode(true);
+    let list = items.cloneNode(true).children;
+    let chunk = Math.ceil(document.querySelector('.items').childElementCount / 2);    
+
+    //clean items
+    while (document.querySelector('.items').firstChild) {
+        document.querySelector('.items').removeChild(document.querySelector('.items').firstChild);
+    }
+    //get arrays with indexes
+    let divided = chunkIteration(list, chunk);    
+
+    divided.forEach(iterate);
+
+
+    /**
+    * Creates new DOM elements and adds existing 
+    * separated by an array of indices
+    */
+    function iterate(item,index){
+        let new_element = document.createElement('div');
+        if(index == 0){
+            new_element.classList.add("offset-md-2");
+            new_element.classList.add("col-md-5");
+        }else{
+            new_element.classList.add("col-md-5");
+        }
+        let length = item.length;
+       
+        for(i = 0; i < length; i++){
+            let elem = list[item[i]].cloneNode(true);
+            
+            new_element.appendChild(elem);  
+        }
+        
+        document.querySelector('.items').appendChild(new_element)
+    }    
+
+    /**
+    * Returns an array with arrays of the given indexes.
+    *
+    * @param myArray {Array} array to chunk
+    * @param chunk_size {Integer} Size of every group
+    */
+    function chunkIteration(myArray, chunk_size){
+        let index = 0;
+        let arrayLength = myArray.length -1;    
+        let tempArray = [];   
+
+        for (index = 0; index < arrayLength; index += chunk_size) {
+            let step = index + chunk_size;
+            let group = [];        
+            for(let i = index; i < step; i++){
+                if(i  <= arrayLength)            
+                    group.push(i);
+            }
+            tempArray.push(group);        
+        }
+
+        return tempArray;
+    }
+});
+</script>
 @endpush

@@ -14,7 +14,7 @@ class CustomerRegistrationController extends Controller
      */
     public function index()
     {
-        $categories = TargetCategory::all();
+        $categories = TargetCategory::all();        
         // dd($categories);
         return view('registration.customer.registration', compact('categories'));
     }

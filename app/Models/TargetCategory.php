@@ -13,7 +13,7 @@ class TargetCategory extends Model
     /**
      * Subcategories that belongs to Target Category
      */
-    public function target_types()
+    public function subcategories()
     {
         return $this->hasMany('App\Models\TargetSubcategory');
     }
@@ -21,7 +21,7 @@ class TargetCategory extends Model
     /**
      * Target items that belongs to Target Category
      */
-    public function taget_items()
+    public function items()
     {
         return $this->hasMany('App\Models\TargetItem');        
     }
