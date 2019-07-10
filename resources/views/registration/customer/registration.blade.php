@@ -4,70 +4,64 @@
     <div class="card text-white bg-grey col-12 px-0">
         <div class="card-header">
             <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">First step</a>
+                <li class="nav-item col-6 text-center px-0">
+                    <a class="nav-link active" id="pills-first-tab" data-toggle="pill" href="#pills-first" role="tab" aria-controls="pills-first" aria-selected="true">Personal information</a>
                 </li>
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Second step</a>
-                </li>
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Third step</a>
+                <li class="nav-item col-6 text-center px-0">
+                    <a class="nav-link" id="pills-second-tab" data-toggle="pill" href="#pills-second" role="tab" aria-controls="pills-second" aria-selected="false">Interests/Hobbies</a>
                 </li>
             </ul>        
         </div>
         <div class="card-body">
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">
+                    <form id='first_step'>
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-6">                            
+                                <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="First Name" required>
                             </div>
-                            <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <div class="form-group col-md-6">                            
+                                <input type="text" name="last_name" class="form-control" id="inputLastName" placeholder="Last Name" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-6">                            
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" required>
                             </div>
-                            <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <div class="form-group col-md-6">                            
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Check me out
-                            </label>
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-6">                                
+                                <input type="birthday" name="birthday" class="form-control" id="inputbirthday" placeholder="Birthday" required>    
+                            </div>
+                            <div class="form-group col-md-6">                                
+                                <select id="inputGender" name="gender" class="form-control" required>
+                                    <option selected value="">Gender...</option>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                    <option value="other">other</option>
+                                </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <div class="form-row mt-3">
+                            <div class="form-group col-md-6">                                
+                                <select id="inputStatus" name="status" class="form-control" required>
+                                    <option value="" selected> Parental status...</option>
+                                    <option value="with">with children</option>
+                                    <option value="without">without children</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">                                
+                                <input type="number" name="income" class="form-control" id="inputIncome" placeholder="Monthly household income" required>  
+                            </div>
+                        </div>                        
+                        <button type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
                     </form>
 
                 </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
                 <div class="row">
                     <div class="col-5 col-md-3">   
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -107,10 +101,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <h5 class="card-title">Primary card title3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
             </div>            
         </div>
     </div>
@@ -119,10 +109,30 @@
 @section('footer')
 @endsection
 @push('css')
+<!-- datapicker styles -->
+<link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+<!-- custom styles -->
 <link href="{{ asset('css/customer/registration.css') }}" rel="stylesheet">
 @endpush
 @push('scripts')
+<!-- datapicker plugin -->
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<!-- jq validation -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
+var form = $( "#first_step" );
+form.validate();
+$("button").click(function() {
+    form.validate();
+    if(form.valid())
+    $('#pills-second-tab').tab('show');
+  
+});
+</script>
+<!-- end jq validation -->
+<script>
+// step two checkboxes position 
 document.addEventListener("DOMContentLoaded", function(event) {
     let items = document.querySelectorAll('.items');
 
@@ -135,11 +145,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             item.removeChild(item.firstChild);
         }
         
-        if(list.length < 15){  
-            console.log(list)          
+        if(list.length < 15){
             let new_element = document.createElement('div');
             new_element.classList.add("offset-md-2");
             new_element.classList.add("col-md-10");
+            new_element.classList.add("mt-2");
             while(list.length > 0) {
                 new_element.appendChild(list[0]);
             }
@@ -200,5 +210,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 return tempArray;
             }
 });
+</script>
+<script>
+// datepicker
+  $( function() {
+    $( "#inputbirthday" ).datepicker({
+        changeYear: true,
+        changeMonth: true,
+        dateFormat: "yy-mm-dd",
+        yearRange: "1919:2019",
+    });
+  } );
 </script>
 @endpush
