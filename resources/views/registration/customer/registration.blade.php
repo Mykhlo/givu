@@ -13,7 +13,7 @@
             </ul>        
         </div>
         <div class="card-body">
-            <form id='first_step'>
+            <form>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">                        
                             <div class="form-row mt-3">
@@ -57,7 +57,7 @@
                                     <input type="number" name="income" class="form-control" id="inputIncome" placeholder="Monthly household income" required>  
                                 </div>
                             </div>                        
-                            <button type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
+                            <button id="first-button" type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
                     </div>
                     <div class="tab-pane fade" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
                     <div class="row">
@@ -97,7 +97,9 @@
                                 @endforeach
                             </div>                            
                         </div>
-                        <button type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
+                        <div class='offset-md-10 col-md-2 mt-2'>
+                            <button id="second-button" type="button" class="btn btn-success col-12">Next</button>
+                        </div>
                     </div>
                     </div>            
                 </div>  
@@ -115,102 +117,39 @@
 <link href="{{ asset('css/customer/registration.css') }}" rel="stylesheet">
 @endpush
 @push('scripts')
+<!--  step two checkboxes position  -->
+<script src="{{ asset('js/customer/registration.js') }}"></script>
 <!-- datapicker plugin -->
 <script src="{{ asset('js/jquery-ui.js') }}"></script>
 <!-- jq validation -->
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/additional-methods.min.js') }}"></script>
+<!-- wizard buttons -->
 <script>
-var form = $( "#first_step" );
-// form.validate();
-$("button").click(function() {
-    form.validate();
-    if(form.valid())
-    $('#pills-second-tab').tab('show');
-  
+document.addEventListener("DOMContentLoaded", () => {
+    var form = $('form');    
+    //Handle first step button 
+    $('#first-button').click(() => {        
+        form.validate();
+        if(form.valid())
+        $('#pills-second-tab').tab('show');  
+    });
+    // Handle second step button
+    $('#second-button').click(()=>{
+        if($('#v-pills-tab .active').next().is('a')){
+            $('#v-pills-tab .active').next().tab('show');
+        }else{
+            form.validate({ ignore: "" });            
+            if(!form.valid()){ 
+                $('#pills-first-tab').tab('show');                
+            }else{
+                console.log('send request')
+            }        
+        }    
+    });
 });
 </script>
 <!-- end jq validation -->
-<script>
-// step two checkboxes position 
-document.addEventListener("DOMContentLoaded", function(event) {
-    let items = document.querySelectorAll('.items');
-
-    items.forEach((item,index)=>{
-    
-        let list = item.cloneNode(true).children;
-
-        //clean items
-        while (item.firstChild) {
-            item.removeChild(item.firstChild);
-        }
-        
-        if(list.length < 15){
-            let new_element = document.createElement('div');
-            new_element.classList.add("offset-md-2");
-            new_element.classList.add("col-md-10");
-            new_element.classList.add("mt-2");
-            while(list.length > 0) {
-                new_element.appendChild(list[0]);
-            }
-            item.appendChild(new_element);
-            
-        }else if(list.length){            
-            let chunk = Math.ceil(list.length / 2);  
-            
-            //get arrays with indexes
-            let divided = chunkIteration(list, chunk);    
-
-            /**
-            * Creates new DOM elements and adds existing 
-            * separated by an array of indixes
-            */
-            divided.forEach((element, index)=>{
-                let new_element = document.createElement('div');
-                if(index == 0){
-                    new_element.classList.add("offset-md-2");
-                    new_element.classList.add("col-md-5");
-                }else{
-                    new_element.classList.add("col-md-5");
-                }
-                let length = element.length;
-            
-                for(i = 0; i < length; i++){
-                    let elem = list[element[i]].cloneNode(true);
-                    
-                    new_element.appendChild(elem);  
-                }
-                
-                item.appendChild(new_element)
-            });            
-        }
-    });
-
-            /**
-            * Returns an array with arrays of the given indexes.
-            *
-            * @param myArray {Array} array to chunk
-            * @param chunk_size {Integer} Size of every group
-            */
-            function chunkIteration(myArray, chunk_size){
-                let index = 0;
-                let arrayLength = myArray.length -1;    
-                let tempArray = [];   
-
-                for (index = 0; index < arrayLength; index += chunk_size) {
-                    let step = index + chunk_size;
-                    let group = [];        
-                    for(let i = index; i < step; i++){
-                        if(i  <= arrayLength)            
-                            group.push(i);
-                    }
-                    tempArray.push(group);        
-                }
-
-                return tempArray;
-            }
-});
-</script>
 <script>
 // datepicker
   $( function() {
