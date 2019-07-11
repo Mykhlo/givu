@@ -13,9 +13,10 @@
             </ul>        
         </div>
         <div class="card-body">
+            <form id='first_step'>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">
-                    <form id='first_step'>
+                    
                         <div class="form-row mt-3">
                             <div class="form-group col-md-6">                            
                                 <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="First Name" required>
@@ -58,7 +59,7 @@
                             </div>
                         </div>                        
                         <button type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
-                    </form>
+                    
 
                 </div>
                 <div class="tab-pane fade" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
@@ -101,6 +102,7 @@
                     </div>
                   </div>
                 </div>
+            </form>
             </div>            
         </div>
     </div>
@@ -122,7 +124,7 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
 var form = $( "#first_step" );
-form.validate();
+// form.validate();
 $("button").click(function() {
     form.validate();
     if(form.valid())
