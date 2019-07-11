@@ -13,7 +13,8 @@
             </ul>        
         </div>
         <div class="card-body">
-            <form>
+            <form action="/customer" method="POST">            
+            @csrf
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">                        
                             <div class="form-row mt-3">
@@ -39,18 +40,18 @@
                                 <div class="form-group col-md-6">                                
                                     <select id="inputGender" name="gender" class="form-control" required>
                                         <option selected value="">Gender...</option>
-                                        <option value="male">male</option>
-                                        <option value="female">female</option>
-                                        <option value="other">other</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row mt-3">
                                 <div class="form-group col-md-6">                                
-                                    <select id="inputStatus" name="status" class="form-control" required>
+                                    <select id="inputStatus" name="parental_status" class="form-control" required>
                                         <option value="" selected> Parental status...</option>
-                                        <option value="with">with children</option>
-                                        <option value="without">without children</option>
+                                        <option value="1">With children</option>
+                                        <option value="2">Without children</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">                                
@@ -143,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!form.valid()){ 
                 $('#pills-first-tab').tab('show');                
             }else{
+                form.submit();
                 console.log('send request')
             }        
         }    
