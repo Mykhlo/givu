@@ -16,6 +16,6 @@ class GenderSeeder extends Seeder
             ['name' => 'Female'],
             ['name'=>'Other'],            
         ];
-        DB::table('target_categories')->insert($gender);
+        DB::table('genders')->insert($gender);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TargetCategory;
+use App\Models\{TargetCategory, Gender, ParentalStatus};
 use App\Http\Requests\CustomerRegistration;
 
 class CustomerRegistrationController extends Controller
@@ -15,9 +15,10 @@ class CustomerRegistrationController extends Controller
      */
     public function index()
     {
-        $categories = TargetCategory::all();        
-        // dd($categories);
-        return view('registration.customer.registration', compact('categories'));
+        $categories = TargetCategory::all();
+        $parental_status = ParentalStatus::all();
+        $gender = Gender::all();                
+        return view('registration.customer.registration', compact('categories', 'parental_status','gender'));
     }
 
     /**

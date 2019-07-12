@@ -31,7 +31,7 @@ class CustomerRegistration extends FormRequest
             "birthday" => 'required|date|max:255|',
             "gender" => 'required|numeric|max:255|',
             "parental_status" => 'required|numeric|max:255|',
-            "income" => 'required|numeric|max:255|',
+            "income" => 'required|numeric|max:999999999|',
         ];
     }
 }

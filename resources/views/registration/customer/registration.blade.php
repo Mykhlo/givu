@@ -19,15 +19,15 @@
                     <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">                        
                             <div class="form-row mt-3">
                                 <div class="form-group col-md-6">                            
-                                    <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="First Name" required>
+                                    <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" id="inputFirstName" placeholder="First Name" required>
                                 </div>
                                 <div class="form-group col-md-6">                            
-                                    <input type="text" name="last_name" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                                    <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" id="inputLastName" placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="form-row mt-3">
                                 <div class="form-group col-md-6">                            
-                                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="inputEmail" placeholder="Email" required>
                                 </div>
                                 <div class="form-group col-md-6">                            
                                     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
@@ -35,27 +35,28 @@
                             </div>
                             <div class="form-row mt-3">
                                 <div class="form-group col-md-6">                                
-                                    <input type="birthday" name="birthday" class="form-control" id="inputbirthday" placeholder="Birthday" required>    
+                                    <input type="birthday" name="birthday" value="{{old('birthday')}}" class="form-control" id="inputbirthday" placeholder="Birthday" required>    
                                 </div>
                                 <div class="form-group col-md-6">                                
                                     <select id="inputGender" name="gender" class="form-control" required>
-                                        <option selected value="">Gender...</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
-                                        <option value="3">Other</option>
+                                        <option {{is_null(old('gender')) ? 'selected' : ''}} value="">Gender...</option>
+                                        @foreach($gender as $option)
+                                            <option {{old('gender') == $option->id ? 'selected' : ''}} value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row mt-3">
                                 <div class="form-group col-md-6">                                
                                     <select id="inputStatus" name="parental_status" class="form-control" required>
-                                        <option value="" selected> Parental status...</option>
-                                        <option value="1">With children</option>
-                                        <option value="2">Without children</option>
+                                        <option {{is_null(old('parental_status')) ? 'selected' : ''}} value=""> Parental status...</option>
+                                        @foreach($parental_status as $option)
+                                            <option {{old('parental_status') == $option->id ? 'selected' : ''}} value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">                                
-                                    <input type="number" name="income" class="form-control" id="inputIncome" placeholder="Monthly household income" required>  
+                                    <input type="number" name="income" value="{{old('income')}}" class="form-control" id="inputIncome" placeholder="Monthly household income" required>  
                                 </div>
                             </div>                        
                             <button id="first-button" type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
@@ -71,8 +72,7 @@
                                     <a class="nav-link font-weight-bold" id="v-pills-{{$category->id}}tab" data-toggle="pill" href="#v-pills-{{$category->id}}" role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="false">{{$category->name}}</a>
                                 @endif
                             @endforeach
-                            </div>
-                        </div>
+                            </div>                        </div>
                         <div class="col-7 col-md-9 text-secondary">
                             <div class="tab-content" id="v-pills-tabContent">
                                 @foreach($categories as $category)                                                     
@@ -108,6 +108,15 @@
         </div>
     </div>
 </div>
+@if ($errors->any())
+    <div id="errors" class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @endsection
 @section('footer')
 @endsection
@@ -128,19 +137,20 @@
 <!-- wizard buttons -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    var form = $('form');    
+    var form = $('form');  
+    form.validate({ ignore: "" });    
     //Handle first step button 
-    $('#first-button').click(() => {        
-        form.validate();
-        if(form.valid())
-        $('#pills-second-tab').tab('show');  
+    $('#first-button').click(() => {                
+        if(form.valid()){
+            $('#pills-second-tab').tab('show');  
+            $('#errors').remove();
+        }
     });
     // Handle second step button
     $('#second-button').click(()=>{
         if($('#v-pills-tab .active').next().is('a')){
             $('#v-pills-tab .active').next().tab('show');
-        }else{
-            form.validate({ ignore: "" });            
+        }else{                      
             if(!form.valid()){ 
                 $('#pills-first-tab').tab('show');                
             }else{

@@ -15,6 +15,6 @@ class ParentalStatusesSeeder extends Seeder
             ['name' => 'With children'],
             ['name' => 'Without children'],           
         ];
-        DB::table('target_categories')->insert($parental_status);
+        DB::table('parental_statuses')->insert($parental_status);
     }
 }
