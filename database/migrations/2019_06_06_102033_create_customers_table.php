@@ -17,7 +17,9 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();  
             $table->string('first_name');
-            $table->string('last_name')->nullable();
+            $table->string('last_name');
+            $table->date('birthday');
+            $table->integer('income');            
             $table->timestamps();
             $table->softDeletes();
         });

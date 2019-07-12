@@ -9,11 +9,16 @@ class TargetSubcategory extends Model
     protected $fillable = [
         'name'
     ];
+    
+    /**
+     * Disable timestamps
+     */
+    public $timestamps = false;
 
     /**
      * Items that belongs to Target Type
      */
-    public function target_items()
+    public function items()
     {
         return $this->hasMany('App\Models\TargetItem');
     }

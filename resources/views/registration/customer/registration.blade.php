@@ -4,170 +4,173 @@
     <div class="card text-white bg-grey col-12 px-0">
         <div class="card-header">
             <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">First step</a>
+                <li class="nav-item col-6 text-center px-0">
+                    <a class="nav-link active" id="pills-first-tab" data-toggle="pill" href="#pills-first" role="tab" aria-controls="pills-first" aria-selected="true">Personal information</a>
                 </li>
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Second step</a>
-                </li>
-                <li class="nav-item col-4 px-0">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Third step</a>
+                <li class="nav-item col-6 text-center px-0">
+                    <a class="nav-link" id="pills-second-tab" data-toggle="pill" href="#pills-second" role="tab" aria-controls="pills-second" aria-selected="false">Interests/Hobbies</a>
                 </li>
             </ul>        
         </div>
         <div class="card-body">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <form action="/customer" method="POST">            
+            @csrf
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">                        
+                            <div class="form-row mt-3">
+                                <div class="form-group col-md-6">                            
+                                    <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" id="inputFirstName" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group col-md-6">                            
+                                    <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <div class="form-row mt-3">
+                                <div class="form-group col-md-6">                            
+                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="inputEmail" placeholder="Email" required>
+                                </div>
+                                <div class="form-group col-md-6">                            
+                                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                                </div>
                             </div>
+                            <div class="form-row mt-3">
+                                <div class="form-group col-md-6">                                
+                                    <input type="birthday" name="birthday" value="{{old('birthday')}}" class="form-control" id="inputbirthday" placeholder="Birthday" required>    
+                                </div>
+                                <div class="form-group col-md-6">                                
+                                    <select id="inputGender" name="gender" class="form-control" required>
+                                        <option {{is_null(old('gender')) ? 'selected' : ''}} value="">Gender...</option>
+                                        @foreach($gender as $option)
+                                            <option {{old('gender') == $option->id ? 'selected' : ''}} value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row mt-3">
+                                <div class="form-group col-md-6">                                
+                                    <select id="inputStatus" name="parental_status" class="form-control" required>
+                                        <option {{is_null(old('parental_status')) ? 'selected' : ''}} value=""> Parental status...</option>
+                                        @foreach($parental_status as $option)
+                                            <option {{old('parental_status') == $option->id ? 'selected' : ''}} value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">                                
+                                    <input type="number" name="income" value="{{old('income')}}" class="form-control" id="inputIncome" placeholder="Monthly household income" required>  
+                                </div>
+                            </div>                        
+                            <button id="first-button" type="button" class="btn btn-success offset-md-10 col-md-2">Next</button>
+                    </div>
+                    <div class="tab-pane fade" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
+                    <div class="row">
+                        <div class="col-5 col-md-3">   
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            @foreach($categories as $category)
+                                @if($loop->first)
+                                    <a class="nav-link font-weight-bold active" id="v-pills-{{$category->id}}-tab" data-toggle="pill" href="#v-pills-{{$category->id}}" role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="true">{{$category->name}}</a>
+                                @else
+                                    <a class="nav-link font-weight-bold" id="v-pills-{{$category->id}}tab" data-toggle="pill" href="#v-pills-{{$category->id}}" role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="false">{{$category->name}}</a>
+                                @endif
+                            @endforeach
+                            </div>                        </div>
+                        <div class="col-7 col-md-9 text-secondary">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                @foreach($categories as $category)                                                     
+                                    @if($loop->first)                                   
+                                        <div class="tab-pane fade show active" id="v-pills-{{$category->id}}" role="tabpanel" aria-labelledby="v-pills-{{$category->id}}-tab">
+                                    @else  
+                                        <div class="tab-pane fade" id="v-pills-{{$category->id}}" role="tabpanel" aria-labelledby="v-pills-{{$category->id}}-tab"> 
+                                    @endif   
+                                            <div class="row mt-3 items">
+                                                @foreach($category->subcategories as $subcategory) 
+                                                        @if($loop->count > 1)
+                                                            <h3 {{$loop->first ? "class=mt-0":''}}>{{$subcategory->name}}</h3>
+                                                        @endif
+                                                            @foreach($subcategory->items as $item)   
+                                                            <div class="custom-control custom-checkbox">                                    
+                                                                <input type="checkbox" id="target-{{$item->id}}" class="custom-control-input" value="{{$item->id}}" name="target_checkboxes[]">
+                                                                <label class="custom-control-label pt-1" for="target-{{$item->id}}">{{$item->name}}</label>
+                                                            </div>
+                                                            @endforeach	
+                                                @endforeach                                                                                      
+                                            </div>																															
+                                        </div>
+                                @endforeach
+                            </div>                            
                         </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Check me out
-                            </label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                    </form>
-
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="row">
-                    <div class="col-5 col-md-3">   
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link font-weight-bold active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Apparel & Accessories</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Vehicles</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Gifts and occasions</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Arts & Craft supplies</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Beauty products and services</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Consumer electronics</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Dating Services</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Education</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Events & Showbiz</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Food</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Home</a>
-                            <a class="nav-link font-weight-bold" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Travel</a>
+                        <div class='offset-md-10 col-md-2 mt-2'>
+                            <button id="second-button" type="button" class="btn btn-success col-12">Next</button>
                         </div>
                     </div>
-                    <div class="col-7 col-md-9 text-secondary">
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-                              <div class="row">
-                                <div class="col-md-4">
-                                    <h3>Activewear</h3>
-                                        <input type="checkbox" id="target-17" value="17" name="target_checkboxes[]">
-                                        <label for="target-17">Running wear</label> <br>
-                                        <input type="checkbox" id="target-18" value="18" name="target_checkboxes[]">
-                                        <label for="target-18">Yoga wear</label> <br>
-                                        <input type="checkbox" id="target-19" value="19" name="target_checkboxes[]">
-                                        <label for="target-19">Costumes</label> <br>
-                                        
-                                        <h3>Shoes</h3>
-                                        <input type="checkbox" id="target-1" value="1" name="target_checkboxes[]">
-                                        <label for="target-1">Activewear</label> <br>
-                                        <input type="checkbox" id="target-2" value="2" name="target_checkboxes[]">
-                                        <label for="target-2">Running wear</label> <br>
-                                        <input type="checkbox" id="target-3" value="3" name="target_checkboxes[]">
-                                        <label for="target-3">Yoga wear</label> <br>
-                                        <input type="checkbox" id="target-4" value="4" name="target_checkboxes[]">
-                                        <label for="target-4">Costumes</label> <br>
-                                        <input type="checkbox" id="target-5" value="5" name="target_checkboxes[]">
-                                        <label for="target-5"> Hand Soap - $3</label> <br>
-                                        <input type="checkbox" id="target-6" value="6" name="target_checkboxes[]">
-                                        <label for="target-6"> Air Freshener Spray - $2</label> <br>      
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>Eyewear</h3>
-                                        <input type="checkbox" id="target-7" value="7" name="target_checkboxes[]">
-                                        <label for="target-7">Eyeglasses / Contact Lenses</label> <br>
-                                        <input type="checkbox" id="target-8" value="8" name="target_checkboxes[]">
-                                        <label for="target-8">Sunglasses</label> <br>         
-                                        
-                                        <h3>Other</h3>
-                                        <input type="checkbox" id="target-9" value="9" name="target_checkboxes[]">
-                                        <label for="target-9">Swimwear</label> <br>
-                                        <input type="checkbox" id="target-10" value="10" name="target_checkboxes[]">
-                                        <label for="target-10">Wallets & briefcases & leather goods</label> <br> 
-                                </div>
-                                <div class="col-md-4">
-                                    <h3>Formal wear</h3>
-                                        <input type="checkbox" id="target-11" value="11" name="target_checkboxes[]">
-                                        <label for="target-11">Suits and business attire</label> <br>
-                                        <input type="checkbox" id="target-13" value="13" name="target_checkboxes[]">
-                                        <label for="target-13">Handbags</label> <br>
-                                        <input type="checkbox" id="target-14" value="14" name="target_checkboxes[]">
-                                        <label for="target-14">Jewelry</label> <br>
-                                        <input type="checkbox" id="target-15" value="15" name="target_checkboxes[]">
-                                        <label for="target-15">Watches</label> <br>
-                                        <input type="checkbox" id="target-15" value="15" name="target_checkboxes[]">
-                                        <label for="target-10">Lingerie & underwear</label> <br>
-                                        <input type="checkbox" id="target-16" value="16" name="target_checkboxes[]">
-                                        <label for="target-16">luggage</label> <br>                                                                
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">2</div>
-                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">.3.</div>
-                            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">.4.</div>
-                            <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">.5.</div>
-                            <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">.6.</div>
-                            <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">.7.</div>
-                            <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">..8</div>
-                            <div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">.9.</div>
-                            <div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">.10.</div>
-                            <div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">.11.</div>
-                            <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">.12.</div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <h5 class="card-title">Primary card title3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>            
+                    </div>            
+                </div>  
+            </form>          
         </div>
     </div>
 </div>
+@if ($errors->any())
+    <div id="errors" class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @endsection
 @section('footer')
 @endsection
 @push('css')
+<!-- datapicker styles -->
+<link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+<!-- custom styles -->
 <link href="{{ asset('css/customer/registration.css') }}" rel="stylesheet">
+@endpush
+@push('scripts')
+<!--  step two checkboxes position  -->
+<script src="{{ asset('js/customer/registration.js') }}"></script>
+<!-- datapicker plugin -->
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<!-- jq validation -->
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/additional-methods.min.js') }}"></script>
+<!-- wizard buttons -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    var form = $('form');  
+    form.validate({ ignore: "" });    
+    //Handle first step button 
+    $('#first-button').click(() => {                
+        if(form.valid()){
+            $('#pills-second-tab').tab('show');  
+            $('#errors').remove();
+        }
+    });
+    // Handle second step button
+    $('#second-button').click(()=>{
+        if($('#v-pills-tab .active').next().is('a')){
+            $('#v-pills-tab .active').next().tab('show');
+        }else{                      
+            if(!form.valid()){ 
+                $('#pills-first-tab').tab('show');                
+            }else{
+                form.submit();
+                console.log('send request')
+            }        
+        }    
+    });
+});
+</script>
+<!-- end jq validation -->
+<script>
+// datepicker
+  $( function() {
+    $( "#inputbirthday" ).datepicker({
+        changeYear: true,
+        changeMonth: true,
+        dateFormat: "yy-mm-dd",
+        yearRange: "1919:2019",
+    });
+  } );
+</script>
 @endpush

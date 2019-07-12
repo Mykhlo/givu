@@ -2,8 +2,8 @@
     margin-top: 2rem;
 }
 .nav-pills .nav-item .nav-link.active {
-    background-color: #9ee1bc;
-    /* color: #85817c; */
+    background-color: unset;
+    color: #f7765f;
 }
 .nav-pills .nav-item .nav-link {
     color: #85817c;
@@ -29,6 +29,11 @@
 }
 #v-pills-tabContent label {
     display: inline;
+}
+/* errors */
+label.error {
+    color: red;
+    padding-left: 13px;
 }
 /* Footer */
 /* footer.section {

@@ -12,7 +12,11 @@ class Customer extends Model
     protected $fillable = [
         'user_id',
         'first_name',
-        'last_name',
+        'last_name', 
+        'birthday',        
+        'parental_status',
+        'income',
+
     ];
 
     /**
@@ -29,6 +33,22 @@ class Customer extends Model
     public function favourites()
     {
         return $this->belongsToMany('App\Models\OrgCategory', 'favourites', 'customer_id', 'org_category_id');
+    }
+
+    /**
+     * The Parental status that belongs to user
+     */
+    public function parental_status()
+    {
+        return $this->hasMany('App\Models\ParentalStatus');
+    }
+
+    /**
+     * The gender that belongs to user
+     */
+    public function gender()
+    {
+        return $this->hasMany('App\Models\Gender');
     }
 
     /**
