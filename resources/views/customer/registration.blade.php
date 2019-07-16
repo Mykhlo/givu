@@ -34,7 +34,7 @@
                                     <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
                                 </div>
                                 <div class="form-group col-md-6">                            
-                                    <input type="password" name="confirm_password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
+                                    <input type="password" name="password_confirmation" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
                                 </div>
                             </div>
                             <div class="form-row mt-3">
@@ -72,7 +72,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group offset-md-3 col-md-6">                                
-                                    <select multiple id="inputLanguages" name="languages" class="form-control" style="width: 100%">                                        
+                                    <select multiple id="inputLanguages" name="languages[]" class="form-control" style="width: 100%">                                        
                                         @foreach($languages as $option)
                                             <option {{old('languages') == $option->id ? 'selected' : ''}} value="{{$option->id}}" style="width: 100%">{{$option->name}}</option>
                                         @endforeach
@@ -117,7 +117,7 @@
                                                             @endif
                                                                 @foreach($subcategory->items as $item)   
                                                                 <div class="custom-control custom-checkbox">                                    
-                                                                    <input type="checkbox" id="target-{{$item->id}}" class="custom-control-input" value="{{$item->id}}" name="target_checkboxes[]">
+                                                                    <input type="checkbox" id="target-{{$item->id}}" class="custom-control-input" value="{{$item->id}}" name="target_checkboxes[]" {{ is_null(old('target_checkboxes.'.$item->id)) ? '' : 'checked' }}>
                                                                     <label class="custom-control-label pt-1" for="target-{{$item->id}}">{{$item->name}}</label>
                                                                 </div>
                                                                 @endforeach	
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             password: {               
                 minlength: 6,
             },            
-            confirm_password: {
+            password_confirmation: {
                 equalTo: "#inputPassword"
             }
           }

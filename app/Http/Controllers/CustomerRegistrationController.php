@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education};
+use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education, User, Customer};
 use App\Http\Requests\CustomerRegistration;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerRegistrationController extends Controller
 {
@@ -41,8 +42,21 @@ class CustomerRegistrationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRegistration $request)
+    // public function store(Request $request)
     {
-        dd($request->all());
+        $new_user = User::create([            
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+        
+        $new_user->assignRole('customer');        
+
+        $new_customer = Customer::create([
+            'user_id' => $new_user->id,
+            'name' => $request->name,
+            'birthday' => $request->birthday,                 
+        ]);
+        dd($new_customer);
     }
 
     /**
