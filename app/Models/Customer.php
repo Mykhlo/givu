@@ -11,12 +11,12 @@ class Customer extends Model
 
     protected $fillable = [
         'user_id',
-        'first_name',
-        'last_name', 
+        'name', 
         'birthday',        
         'parental_status',
         'income',
-
+        'languages',
+        'education',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Customer extends Model
     }
 
     /**
-     * The categories that belongs to the user.
+     * The categories that belongs to the customer.
      */
     public function favourites()
     {
@@ -36,28 +36,52 @@ class Customer extends Model
     }
 
     /**
-     * The Parental status that belongs to user
-     */
-    public function parental_status()
-    {
-        return $this->hasMany('App\Models\ParentalStatus');
-    }
-
-    /**
-     * The gender that belongs to user
-     */
-    public function gender()
-    {
-        return $this->hasMany('App\Models\Gender');
-    }
-
-    /**
-     * The Target items that belongs to user
+     * The Target items that belongs to customer.
      */
     public function target_items()
     {
         return $this->hasMany('App\Models\TargetItem');
     }
 
+
+    /**
+     * The Parental status that belongs to customer.
+     */
+    public function parental_status()
+    {
+        return $this->hasOne('App\Models\ParentalStatus');
+    }
+
+    /**
+     * The Income that belongs to customer.
+     */
+    public function income()
+    {
+        return $this->hasOne('App\Models\Income');
+    }
+
+    /**
+     * The gender that belongs to customer.
+     */
+    public function gender()
+    {
+        return $this->hasOne('App\Models\Gender');
+    }
+
+    /**
+     * The Languages that belongs to customer.
+     */
+    public function languages()
+    {
+        return $this->hasMany('App\Models\Languages');
+    }
+
+    /**
+     * The Languages that belongs to customer.
+     */
+    public function education()
+    {
+        return $this->hasMany('App\Models\Education');
+    }
 
 }

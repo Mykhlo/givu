@@ -28,7 +28,7 @@ class LandingController extends Controller
                 return view('landing', compact('categories'), compact('favourites')); 
         }else{
                 $categories = $categories->chunk(2); //split array by rows(two in row)
-                return view('landing', compact('categories')); 
+                return view('customer.landing', compact('categories')); 
         }       
     }
 
@@ -73,12 +73,13 @@ class LandingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\OrgCatogory  $category
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        dd($id);
+        return view('customer.org_category', compact('category'));
     }
 
     /**

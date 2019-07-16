@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{TargetCategory, Gender, ParentalStatus};
+use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education};
 use App\Http\Requests\CustomerRegistration;
 
 class CustomerRegistrationController extends Controller
@@ -17,8 +17,11 @@ class CustomerRegistrationController extends Controller
     {
         $categories = TargetCategory::all();
         $parental_status = ParentalStatus::all();
-        $gender = Gender::all();                
-        return view('registration.customer.registration', compact('categories', 'parental_status','gender'));
+        $gender = Gender::all();
+        $income = Income::all(); 
+        $languages = Languages::all(); 
+        $education = Education::all();              
+        return view('customer.registration', compact('categories', 'parental_status', 'gender', 'income', 'languages', 'education'));
     }
 
     /**
@@ -34,7 +37,7 @@ class CustomerRegistrationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CustomerRegistration  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRegistration $request)

@@ -11,6 +11,9 @@
 |
 */
 
+/**
+ * Customre routes
+ */
 Route::resource('/', 'LandingController');
 Route::resource('/customer', 'CustomerRegistrationController');
 

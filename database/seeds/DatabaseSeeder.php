@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(TargetCategoriesTableSeeder::class);
         $this->call(TargetItemsTableSeeder::class);
         $this->call(ParentalStatusesSeeder::class);
-        $this->call(GenderSeeder::class);        
+        $this->call(GenderSeeder::class); 
+        $this->call(EducationSeeder::class); 
+        $this->call(IncomeSeeder::class); 
+        $this->call(LanguagesSeeder::class);        
     }
 }
