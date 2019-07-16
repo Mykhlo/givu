@@ -13,37 +13,26 @@ class OrgCategoriesSeeder extends Seeder
     {   
         $orgs = [
             [
-                'name' => 'Environment',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Environment',                
             ],
             [
-                'name' => 'Animal rights',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Animal rights',                
             ],
             [
-                'name' => 'Human rights',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Human rights',                
             ],
             [
-                'name' => 'Education',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Education',                
             ],
             [
-                'name' => 'Development',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Development',                
             ],
             [
-                'name' => 'Health',
-                'created_at' => \Carbon\Carbon::now(),
+                'name' => 'Health',                
             ],
             [
-                'name' => 'Art and culture',
-                'created_at' => \Carbon\Carbon::now(),
-            ],
-            // [
-            //     'name' => 'test',
-            //     'created_at' => \Carbon\Carbon::now(),
-            // ],              
+                'name' => 'Art and culture',                
+            ],                         
         ];
         DB::table('org_categories')->insert($orgs);
     }

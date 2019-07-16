@@ -12,11 +12,11 @@ class Customer extends Model
     protected $fillable = [
         'user_id',
         'name', 
-        'birthday',        
-        'parental_status',
-        'income',
-        'languages',
-        'education',
+        'birthday',  
+        'gender_id',      
+        'parental_status_id',
+        'income_id',        
+        'education_id',
     ];
 
     /**
@@ -36,52 +36,51 @@ class Customer extends Model
     }
 
     /**
-     * The Target items that belongs to customer.
-     */
-    public function target_items()
-    {
-        return $this->hasMany('App\Models\TargetItem');
-    }
-
-
-    /**
-     * The Parental status that belongs to customer.
-     */
-    public function parental_status()
-    {
-        return $this->hasOne('App\Models\ParentalStatus');
-    }
-
-    /**
-     * The Income that belongs to customer.
-     */
-    public function income()
-    {
-        return $this->hasOne('App\Models\Income');
-    }
-
-    /**
-     * The gender that belongs to customer.
-     */
-    public function gender()
-    {
-        return $this->hasOne('App\Models\Gender');
-    }
-
-    /**
      * The Languages that belongs to customer.
      */
     public function languages()
     {
-        return $this->hasMany('App\Models\Languages');
+        return $this->belongsToMany('App\Models\Languages');
     }
 
     /**
-     * The Languages that belongs to customer.
+     * The Target items that belongs to customer.
+     */
+    public function target_items()
+    {
+        return $this->belongsToMany('App\Models\TargetItem');
+    }
+
+    /**
+     * Parent status to which the client belongs.
+     */
+    public function parental_status()
+    {
+        return $this->belongsTo('App\Models\ParentalStatus');
+    }
+
+    /**
+     * Income to which the client belongs.
+     */
+    public function income()
+    {
+        return $this->belongsTo('App\Models\Income');
+    }
+
+    /**
+     * Gender to which the client belongs.
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
+    }
+
+    /**
+     * Education to which the client belongs.
      */
     public function education()
     {
-        return $this->hasMany('App\Models\Education');
+        return $this->belongsTo('App\Models\Education');
     }
 
 }

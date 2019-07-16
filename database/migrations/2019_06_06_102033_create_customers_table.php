@@ -15,7 +15,17 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned();  
+            $table->integer('user_id')->unsigned();
+            $table->integer('gender_id')->unsigned();
+            $table->integer('parental_status_id')
+                ->nullable(true)
+                ->unsigned();
+            $table->integer('income_id')
+                ->nullable(true)
+                ->unsigned(); 
+            $table->integer('education_id')
+                ->nullable(true)
+                ->unsigned();           
             $table->string('name');            
             $table->date('birthday');                       
             $table->timestamps();

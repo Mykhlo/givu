@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education, User, Customer};
 use App\Http\Requests\CustomerRegistration;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\{Hash, DB};
 
 class CustomerRegistrationController extends Controller
 {
@@ -43,19 +43,38 @@ class CustomerRegistrationController extends Controller
      */
     public function store(CustomerRegistration $request)
     // public function store(Request $request)
-    {
-        $new_user = User::create([            
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        
-        $new_user->assignRole('customer');        
+    {    
+        DB::beginTransaction();
 
-        $new_customer = Customer::create([
-            'user_id' => $new_user->id,
-            'name' => $request->name,
-            'birthday' => $request->birthday,                 
-        ]);
+        try{
+
+            $new_user = User::create([            
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+            
+            $new_user->assignRole('customer');  
+    
+            $new_customer = Customer::create([
+                'user_id' => $new_user->id,
+                'name' => $request->name,
+                'birthday' => $request->birthday,
+                'gender_id' => $request->gender,
+                'education_id' => $request->education,
+                'income_id' => $request->income,
+                'parental_status_id' => $request->parental_status,                 
+            ]);            
+
+            $new_customer->target_items()->attach($request->target_checkboxes);
+            $new_customer->languages()->attach($request->languages);
+
+        } catch ( \Exception $e){
+            DB::rollback();
+            throw $e;
+        }
+
+        DB::commit();        
+        
         dd($new_customer);
     }
 

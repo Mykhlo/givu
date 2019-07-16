@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEducationTable extends Migration
+class CreateCustomerTargetItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('customer_target_item', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name'); 
+            $table->integer('customer_id')->unsigned();
+            $table->integer('target_item_id')->unsigned();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateEducationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('customer_target_item');
     }
 }

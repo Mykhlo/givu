@@ -16,7 +16,6 @@ class CreateOrgCategoriesTable extends Migration
         Schema::create('org_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->timestamps();
         });
     }
 
