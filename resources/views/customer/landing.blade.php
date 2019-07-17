@@ -1,4 +1,4 @@
-@extends('layouts.customer.base')
+@extends('customer.base')
 @include('_partials.navbar')
 @section('content')
 <div class="row mt-4">
@@ -49,11 +49,11 @@
                 <p class="card-description">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
                 </p>
-                <div class="btn-group col-8 px-0" role="group" aria-label="Basic example">
+                <div class="btn-group col-md-8 px-0" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-danger btn-round">Donate for free</button>
                     <button type="button" class="btn btn-success btn-round">quick free donation</button>                    
                 </div>
-                <button type="button" class=" col-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate (credit card)</button>
+                <button type="button" class=" col-md-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate (credit card)</button>
               </div>
             </div>
           </div>
@@ -83,6 +83,12 @@
       delay: 0.5,
       end: 22097
     });
+</script>
+<script>
+@if($errors->has('email'))
+  if(window.location.pathname == '/')
+    $('#modal-login').modal('show')
+@endif
 </script>
 <script>
   // favourite ajax request

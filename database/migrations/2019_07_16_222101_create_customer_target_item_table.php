@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrgCategoriesTable extends Migration
+class CreateCustomerTargetItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateOrgCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('org_categories', function (Blueprint $table) {
+        Schema::create('customer_target_item', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->integer('customer_id')->unsigned();
+            $table->integer('target_item_id')->unsigned();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateOrgCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('org_categories');
+        Schema::dropIfExists('customer_target_item');
     }
 }

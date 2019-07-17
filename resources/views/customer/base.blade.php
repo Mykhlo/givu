@@ -38,10 +38,10 @@
         <script src="{{ asset('js/theme/plugins/nouislider.min.js') }}"></script>
 
         <!--  A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates : https://github.com/moment/moment -->
-        <script src="{{ asset('js/theme/plugins//moment.min.js') }}"></script>
+        <script src="{{ asset('js/theme/plugins/moment.min.js') }}"></script>
 
         <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-        <script src="{{ asset('js/theme/plugins//bootstrap-datepicker.js') }}"></script>
+        <script src="{{ asset('js/theme/plugins/bootstrap-datepicker.js') }}"></script>
 
 
 

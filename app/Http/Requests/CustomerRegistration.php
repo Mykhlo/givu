@@ -24,14 +24,18 @@ class CustomerRegistration extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string|max:255',
-            "last_name" => 'required|string|max:255',
+            'name' => 'required|string|max:255',            
             "email" => 'required|email|max:255|unique:users',
-            "password" => 'required|min:6|max:100',
+            "password" => 'required|confirmed|min:6|max:100',
             "birthday" => 'required|date|max:255|',
             "gender" => 'required|numeric|max:255|',
-            "parental_status" => 'required|numeric|max:255|',
-            "income" => 'required|numeric|max:999999999|',
+            "parental_status" => 'nullable|numeric|max:255|',
+            "income" => 'nullable|numeric|max:999999999|',
+            "languages" => 'array|max:255|',
+            "languages.*" => 'distinct|numeric|max:255|', 
+            "education" => 'nullable|numeric|max:255|',
+            "target_checkboxes" => 'array|max:255|', 
+            "target_checkboxes.*" => 'distinct|numeric|max:255|', 
         ];
     }
 }

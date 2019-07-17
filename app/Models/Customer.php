@@ -11,12 +11,12 @@ class Customer extends Model
 
     protected $fillable = [
         'user_id',
-        'first_name',
-        'last_name', 
-        'birthday',        
-        'parental_status',
-        'income',
-
+        'name', 
+        'birthday',  
+        'gender_id',      
+        'parental_status_id',
+        'income_id',        
+        'education_id',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Customer extends Model
     }
 
     /**
-     * The categories that belongs to the user.
+     * The categories that belongs to the customer.
      */
     public function favourites()
     {
@@ -36,28 +36,51 @@ class Customer extends Model
     }
 
     /**
-     * The Parental status that belongs to user
+     * The Languages that belongs to customer.
      */
-    public function parental_status()
+    public function languages()
     {
-        return $this->hasMany('App\Models\ParentalStatus');
+        return $this->belongsToMany('App\Models\Languages');
     }
 
     /**
-     * The gender that belongs to user
-     */
-    public function gender()
-    {
-        return $this->hasMany('App\Models\Gender');
-    }
-
-    /**
-     * The Target items that belongs to user
+     * The Target items that belongs to customer.
      */
     public function target_items()
     {
-        return $this->hasMany('App\Models\TargetItem');
+        return $this->belongsToMany('App\Models\TargetItem');
     }
 
+    /**
+     * Parent status to which the client belongs.
+     */
+    public function parental_status()
+    {
+        return $this->belongsTo('App\Models\ParentalStatus');
+    }
+
+    /**
+     * Income to which the client belongs.
+     */
+    public function income()
+    {
+        return $this->belongsTo('App\Models\Income');
+    }
+
+    /**
+     * Gender to which the client belongs.
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
+    }
+
+    /**
+     * Education to which the client belongs.
+     */
+    public function education()
+    {
+        return $this->belongsTo('App\Models\Education');
+    }
 
 }

@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ParentalStatus extends Model
+class Education extends Model
 {
     protected $fillable = [
         'name',
     ];
 
     /**
-     * The Сustomers that are belongs to Parental Status.
+     * The Сustomers that are belongs to Education.
      */
     public function customers()
     {

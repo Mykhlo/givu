@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Favourits extends Model
+class Languages extends Model
 {
     //
 }

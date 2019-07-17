@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{TargetCategory, Gender, ParentalStatus};
+use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education, User, Customer};
 use App\Http\Requests\CustomerRegistration;
+use Illuminate\Support\Facades\{Hash, DB, Auth};
 
 class CustomerRegistrationController extends Controller
 {
@@ -15,10 +16,16 @@ class CustomerRegistrationController extends Controller
      */
     public function index()
     {
+        if(Auth::check())
+            return redirect()->action('LandingController@index');      
+
         $categories = TargetCategory::all();
         $parental_status = ParentalStatus::all();
-        $gender = Gender::all();                
-        return view('registration.customer.registration', compact('categories', 'parental_status','gender'));
+        $gender = Gender::all();
+        $income = Income::all(); 
+        $languages = Languages::all(); 
+        $education = Education::all();              
+        return view('customer.registration', compact('categories', 'parental_status', 'gender', 'income', 'languages', 'education'));
     }
 
     /**
@@ -34,12 +41,47 @@ class CustomerRegistrationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CustomerRegistration  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRegistration $request)
-    {
-        dd($request->all());
+    // public function store(Request $request)
+    {    
+        DB::beginTransaction();
+
+        try{
+
+            $new_user = User::create([            
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+            
+            $new_user->assignRole('customer');  
+    
+            $new_customer = Customer::create([
+                'user_id' => $new_user->id,
+                'name' => $request->name,
+                'birthday' => $request->birthday,
+                'gender_id' => $request->gender,
+                'education_id' => $request->education,
+                'income_id' => $request->income,
+                'parental_status_id' => $request->parental_status,                 
+            ]);            
+
+            $new_customer->target_items()->attach($request->target_checkboxes);
+            $new_customer->languages()->attach($request->languages);
+
+        } catch ( \Exception $e){
+            DB::rollback();
+            throw $e;
+        }
+
+        DB::commit();   
+
+        auth()->login($new_user, true);
+
+        return redirect()->action('LandingController@index');
+        
     }
 
     /**

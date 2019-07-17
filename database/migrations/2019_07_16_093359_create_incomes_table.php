@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrgCategoriesTable extends Migration
+class CreateIncomesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateOrgCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('org_categories', function (Blueprint $table) {
+        Schema::create('incomes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name'); 
         });
     }
 
@@ -26,6 +26,6 @@ class CreateOrgCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('org_categories');
+        Schema::dropIfExists('incomes');
     }
 }
