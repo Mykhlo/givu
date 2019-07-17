@@ -25,7 +25,7 @@ class LandingController extends Controller
                 $categories = $categories->diff($favourites);//delete favourites from categories                
                 $categories = $favourites->merge($categories);//add lefted categories
                 $categories = $categories->chunk(2); //split array by rows(two in row)
-                return view('landing', compact('categories'), compact('favourites')); 
+                return view('customer.landing', compact('categories'), compact('favourites')); 
         }else{
                 $categories = $categories->chunk(2); //split array by rows(two in row)
                 return view('customer.landing', compact('categories')); 

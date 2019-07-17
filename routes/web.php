@@ -17,6 +17,5 @@
 Route::resource('/', 'LandingController');
 Route::resource('/customer', 'CustomerRegistrationController');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{TargetCategory, Gender, ParentalStatus, Income, Languages, Education, User, Customer};
 use App\Http\Requests\CustomerRegistration;
-use Illuminate\Support\Facades\{Hash, DB};
+use Illuminate\Support\Facades\{Hash, DB, Auth};
 
 class CustomerRegistrationController extends Controller
 {
@@ -16,6 +16,9 @@ class CustomerRegistrationController extends Controller
      */
     public function index()
     {
+        if(Auth::check())
+            return redirect()->action('LandingController@index');      
+
         $categories = TargetCategory::all();
         $parental_status = ParentalStatus::all();
         $gender = Gender::all();
@@ -73,9 +76,12 @@ class CustomerRegistrationController extends Controller
             throw $e;
         }
 
-        DB::commit();        
+        DB::commit();   
+
+        auth()->login($new_user, true);
+
+        return redirect()->action('LandingController@index');
         
-        dd($new_customer);
     }
 
     /**

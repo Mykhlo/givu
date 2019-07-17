@@ -35,3 +35,5 @@
       </div>
     </div>
   </footer> 
+  @include('_partials.modal_login')
+  @include('_partials.modal_registration')

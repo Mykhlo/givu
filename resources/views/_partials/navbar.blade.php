@@ -26,10 +26,15 @@
         <div class="justify-content-end">            
             <ul class="navbar-nav">                            
               <li class="nav-item">
-                  <a href="#" target="_blank" class="btn btn-light btn-round">Log-in</a>
+              @guest
+                  <button class="btn btn-light btn-round" data-toggle="modal" data-target="#modal-login">Log-in</button>
+              @endguest
+              @auth
+                  <a class="btn btn-light btn-round" href="{{url('/logout')}}">Log-out</a>
+              @endauth
               </li>
               <li class="nav-item">
-                  <a href="#" target="_blank" class="btn btn-danger btn-round">Sign-up</a>
+                  <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#modal-registration">Sign-up</button>
               </li>
             </ul>
         </div>
