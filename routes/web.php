@@ -12,10 +12,12 @@
 */
 
 /**
- * Customre routes
+ * Customer routes
  */
 Route::resource('/', 'LandingController');
 Route::resource('/customer', 'CustomerRegistrationController');
-
+/**
+ * Guest routes
+ */
 Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

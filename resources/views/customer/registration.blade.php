@@ -127,7 +127,10 @@
                                     @endforeach
                                 </div>                            
                             </div>
-                            <div class='offset-md-10 col-md-2 mt-2'>
+                            <div class='offset-md-8 col-md-2 mt-2'>
+                                <button id="skip-button" type="button" class="btn btn-danger col-12">Skip</button>
+                            </div>
+                            <div class='col-md-2 mt-2'>
                                 <button id="third-button" type="button" class="btn btn-success col-12">Next</button>
                             </div>
                         </div>
@@ -202,10 +205,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!form.valid()){ 
                 $('#pills-first-tab').tab('show');                
             }else{
-                form.submit();
-                console.log('send request')
+                form.submit();                
             }        
         }    
+    });
+       // Handle skip button
+       $('#skip-button').click(()=>{                       
+            if(!form.valid()){ 
+                $('#pills-first-tab').tab('show');                
+            }else{
+                form.submit();                
+            }
     });
 });
 </script>
