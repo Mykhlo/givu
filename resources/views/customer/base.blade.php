@@ -20,14 +20,11 @@
         @stack('css')    
     </head>
     <body>
-        <div class="content container">
-            @yield('content')
-        </div>
+        @yield('content')
         @section('footer')
                 @include('_partials.footer')
         @show
         <!-- Theme scripts -->        
-        
         <script src="{{ asset('js/theme/core/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/theme/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/theme/core/bootstrap.min.js') }}" type="text/javascript"></script>       

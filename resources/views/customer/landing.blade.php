@@ -1,10 +1,12 @@
 @extends('customer.base')
 @section('content')
 @include('_partials.navbar')
-<div class="row mt-5">    
+<header class="mt-5">
+<div class="content container">
+<div class="row">    
     <div class="col-lg-4">    
         <div class="py-4">
-            <h5>Hello! </h5>
+            <h5>Hello!</h5>
             <p>Welcome to our community  of people who improve the world every day by making free donations. Free donation? You heard correctly, see how it works on the cartoon! You now don't need to make a donation of money, you can donate your time ;)</p>      
         </div>
         <div class="row mb-3">
@@ -28,47 +30,53 @@
         </div>        
     </div>
 </div>
+</div>
+</header>
     <!-- navdar 2 temporary disabled -->
- <div class="row mt-4">
-    @foreach ($categories as $row)
-      @foreach ($row as $category)
-        @if($loop->parent->last && $loop->count == 1)
-          <div class="col-lg-12">
-        @elseif($loop->parent->even && $loop->first)
-          <div class="col-lg-7">
-        @elseif($loop->parent->odd && $loop->last)
-          <div class="col-lg-7">
-        @else 
-          <div class="col-lg-5">
-        @endif                   
-            <div class="card" data-background="image" style="background-image: url('https://www.goodeed.com/pictures/project/0b1849e7-721a-463f-ab85-8f3d52ea82c4.JPEG')">
-              @hasrole('customer')
-                <div class="btn-group-toggle favourite" data-toggle="buttons" data-id="{{$category->id}}">
-                  <label class="btn btn-outline-success btn-round">
-                    <input type="checkbox" alt="Submit" {{ $favourites->contains($category->id) ? 'checked' : ''}} autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
-                  </label>
-                </div> 
-              @endhasrole           
-              <div class="card-body pt-4">
-                <!-- <h6 class="card-category">Header 1</h6> -->
-                <a href="{{route('category', ['category' => $category->name])}}">
-                  <h3 class="card-title mt-0">{{$category->name}}</h3>
-                </a>
-                <p class="card-description">
-                {{$category->short_description}}
-                </p>
-                <div class="btn-group col-md-8 px-0" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-danger btn-round">Donate for free</button>
-                    <button type="button" class="btn btn-success btn-round">quick free donation</button>                    
+<section>
+  <div class="container">
+    <div class="row mt-4">
+        @foreach ($categories as $row)
+          @foreach ($row as $category)
+            @if($loop->parent->last && $loop->count == 1)
+              <div class="col-lg-12">
+            @elseif($loop->parent->even && $loop->first)
+              <div class="col-lg-7">
+            @elseif($loop->parent->odd && $loop->last)
+              <div class="col-lg-7">
+            @else 
+              <div class="col-lg-5">
+            @endif                   
+                <div class="card" data-background="image" style="background-image: url({{$category->preview}})">
+                  @hasrole('customer')
+                    <div class="btn-group-toggle favourite" data-toggle="buttons" data-id="{{$category->id}}">
+                      <label class="btn btn-outline-success btn-round">
+                        <input type="checkbox" alt="Submit" {{ $favourites->contains($category->id) ? 'checked' : ''}} autocomplete="off"> <i class="nc-icon nc-favourite-28"></i>
+                      </label>
+                    </div> 
+                  @endhasrole           
+                  <div class="card-body pt-4">
+                    <!-- <h6 class="card-category">Header 1</h6> -->
+                    <a href="{{route('category', ['category' => $category->name])}}">
+                      <h3 class="card-title mt-0">{{$category->name}}</h3>
+                    </a>
+                    <p class="card-description">
+                    {{$category->short_description}}
+                    </p>
+                    <div class="btn-group col-md-8 px-0" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger btn-round">Donate for free</button>
+                        <button type="button" class="btn btn-success btn-round">quick free donation</button>                    
+                    </div>
+                    <button type="button" class=" col-md-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate (credit card)</button>
+                  </div>
                 </div>
-                <button type="button" class=" col-md-8 mt-2 py-3 btn btn-outline-danger btn-round">Donate (credit card)</button>
               </div>
-            </div>
-          </div>
-        @endforeach 
-     @endforeach          
-        </div>
-  </div>
+            @endforeach 
+        @endforeach
+      </div>
+  </div> 
+</section>
+<section>
   <div class="mt-2">
     <div class="col-12">
       <div class="card">
@@ -77,8 +85,8 @@
           <a href="#" target="_blank" class="btn btn-light btn-round">Follow here...</a>
         </div>
       </div>
-    </div>  
-  </div> 
+    </div>
+</section>  
 @endsection
 @push('scripts')
 <script src="{{ asset('js/animationCounter.js') }}"></script>

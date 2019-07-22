@@ -10,6 +10,8 @@ class OrgCategory extends Model
         'name',
         'short_description',
         'description',
+        'preview',
+        'image',
     ];
 
 /**

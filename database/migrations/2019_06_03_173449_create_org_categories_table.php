@@ -18,6 +18,8 @@ class CreateOrgCategoriesTable extends Migration
             $table->string('name');
             $table->string('short_description');
             $table->text('description');
+            $table->string('preview');
+            $table->string('image');
         });
     }
 
