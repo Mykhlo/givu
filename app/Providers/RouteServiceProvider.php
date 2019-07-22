@@ -27,7 +27,6 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
 
-        Route::model('category', App\Models\OrgCategory::class);
     }
 
     /**

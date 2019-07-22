@@ -73,13 +73,12 @@ class LandingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  App\Models\OrgCatogory  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        dd($id);
-        return view('customer.org_category', compact('category'));
+        //       
     }
 
     /**

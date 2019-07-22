@@ -20,6 +20,7 @@ body{
     margin-top: 5rem;
 }
 p.card-description {
+    overflow: hidden;
     height: 100px;
 }
 .counter-title{

@@ -1,7 +1,7 @@
 @extends('customer.base')
-@include('_partials.navbar')
 @section('content')
-<div class="row mt-4">
+@include('_partials.navbar')
+<div class="row mt-5">    
     <div class="col-lg-4">    
         <div class="py-4">
             <h5>Hello! </h5>
@@ -14,9 +14,17 @@
           <h4 class="counter text-center d-flex align-items-center font-weight-bold text-white mt-0 ml-2 pl-2 pr-2 bg-danger rounded">22097</h4>
         </div>
     </div>
-    <div class="col-lg-8 d-none d-lg-block">             
-        <div id="banner" class="rounded">
-            <div id="cloud-scroll"></div>
+    <div class="col-lg-8 d-none d-lg-block">
+        <div>             
+            <div id="banner" class="rounded">
+            <div id="cloud-scroll">
+            <!-- <div>
+            <video width="400" autoplay loop muted>
+              <source src="{{asset('storage/video/givu_video.mp4')}}" type="video/mp4">              
+              Your browser does not support the video tag.
+            </video>-->
+            </div> 
+            </div>
         </div>        
     </div>
 </div>
@@ -43,11 +51,11 @@
               @endhasrole           
               <div class="card-body pt-4">
                 <!-- <h6 class="card-category">Header 1</h6> -->
-                <a href="#">
+                <a href="{{route('category', ['category' => $category->name])}}">
                   <h3 class="card-title mt-0">{{$category->name}}</h3>
                 </a>
                 <p class="card-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua....
+                {{$category->short_description}}
                 </p>
                 <div class="btn-group col-md-8 px-0" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-danger btn-round">Donate for free</button>
@@ -71,7 +79,6 @@
       </div>
     </div>  
   </div> 
-
 @endsection
 @push('scripts')
 <script src="{{ asset('js/animationCounter.js') }}"></script>
