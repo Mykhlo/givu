@@ -17,9 +17,10 @@ body{
     overflow: hidden !important;
 }
 .content{
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 p.card-description {
+    overflow: hidden;
     height: 100px;
 }
 .counter-title{

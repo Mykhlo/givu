@@ -8,6 +8,20 @@ class OrgCategory extends Model
 {
     protected $fillable = [
         'name',
+        'short_description',
+        'description',
+        'preview',
+        'image',
     ];
+
+/**
+ * Get the route key for the model.
+ *
+ * @return string
+ */
+public function getRouteKeyName()
+{
+    return 'name';
+}
     
 }

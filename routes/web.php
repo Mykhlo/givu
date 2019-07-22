@@ -12,12 +12,16 @@
 */
 
 /**
- * Customer routes
- */
-Route::resource('/', 'LandingController');
-Route::resource('/customer', 'CustomerRegistrationController');
-/**
- * Guest routes
+ * Auth routes
  */
 Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+/**
+ * Customer routes
+ */
+Route::resource('/', 'LandingController')->only(['index','store']);
+Route::resource('/customer', 'CustomerRegistrationController')->only(['index','store']);
+Route::get('/{category}', function (App\Models\OrgCategory $category) {    
+    return view('category', compact('category')); 
+})->name('category');
+

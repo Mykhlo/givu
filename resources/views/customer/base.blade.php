@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">   
 
         <title>@section('title'){{env('APP_NAME')}}@show</title>
+         
         <!-- Theme Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -19,14 +20,11 @@
         @stack('css')    
     </head>
     <body>
-        <div class="content container">
-            @yield('content')
-        </div>
+        @yield('content')
         @section('footer')
                 @include('_partials.footer')
         @show
         <!-- Theme scripts -->        
-        
         <script src="{{ asset('js/theme/core/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/theme/core/popper.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/theme/core/bootstrap.min.js') }}" type="text/javascript"></script>       
@@ -42,14 +40,10 @@
 
         <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
         <script src="{{ asset('js/theme/plugins/bootstrap-datepicker.js') }}"></script>
-
-
-
-        <script src="{{ asset('js/theme/paper-kit.js') }}"></script>
-
-        <!-- End Theme -->
-
         
+        <!-- Custom theme script -->
+        <script src="{{ asset('js/theme/paper-kit.js') }}"></script>
+        <!-- End Theme -->        
         @stack('scripts')
     </body>
 </html>
