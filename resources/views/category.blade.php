@@ -13,7 +13,27 @@
         </div>
       </div>
     </div>
-  </header>
+</header>
+<section>  
+      <div class="card mt-3">
+        <div class="card-body bg-warning rounded">
+          <div class="container">
+          <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-4 mt-md-0 mt-2">
+              <button type="button" class="btn btn-lg btn-danger btn-round">donate for free</button>
+            </div>
+            <div class="col-md-4 mt-md-0 mt-2">
+              <button type="button" class="btn btn-lg btn-success btn-round">quick free donation</button>
+            </div>
+            <div class="col-md-4 mt-md-0 mt-2">
+              <button type="button" class="btn btn-lg btn-light btn-round">donate (credit card)</button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+</section>
+
 @endsection
 @push('css')
 <style>
