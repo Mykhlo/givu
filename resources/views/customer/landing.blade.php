@@ -77,15 +77,13 @@
   </div> 
 </section>
 <section>
-  <div class="mt-2">
     <div class="col-12">
-      <div class="card">
+      <div class="card mt-2">
         <div class="card-body bg-success d-flex justify-content-center align-items-center rounded">
           <h6 class="pr-2">You want people to donate to your organization or project? Then add it to our collection!</h6>
           <a href="#" target="_blank" class="btn btn-light btn-round">Follow here...</a>
         </div>
       </div>
-    </div>
 </section>  
 @endsection
 @push('scripts')
