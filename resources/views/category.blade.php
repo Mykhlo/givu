@@ -15,7 +15,7 @@
     </div>
 </header>
 <section>  
-      <div class="card mt-3">
+      <div class="card mt-3 mx-3">
         <div class="card-body bg-warning rounded">
           <div class="container">
           <div class="row align-items-center justify-content-center text-center">
